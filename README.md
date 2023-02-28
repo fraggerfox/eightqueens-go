@@ -2,4 +2,4 @@
 
 ... with assistance from ChatGPT
 
-TODO: Complate the README
+TODO: Complete the README
