@@ -36,7 +36,7 @@ func checkDiagonal(board Board, row, col int) bool {
 }
 
 func IsSafe(board Board, row, col int) bool {
-	panic("not implemented")
+	return checkDiagonal(board, row, col) && checkRowColumn(board, row, col)
 }
 
 func placeQueen(board Board, row, col int) bool {
