@@ -86,7 +86,34 @@ func (suite *EightQueensSuite) TestIsSafe() {
 }
 
 func (suite *EightQueensSuite) TestPlaceQueens() {
-	assert.Nil(suite.T(), eightqueens.PlaceQueens(suite.board, 0))
+	solutions := make(eightqueens.Boards, 0)
+	solutions = eightqueens.PlaceQueens(suite.board, 0, &solutions)
+
+	expectedSolutionCount := 92
+	// This is the first solution discovered using this method.
+	/*
+	   Q - - - - - - -
+	   - - - - Q - - -
+	   - - - - - - - Q
+	   - - - - - Q - -
+	   - - Q - - - - -
+	   - - - - - - Q -
+	   - Q - - - - - -
+	   - - - Q - - - -
+	*/
+	expectedFirstsolution := eightqueens.Board{
+		{true, false, false, false, false, false, false, false},
+		{false, false, false, false, true, false, false, false},
+		{false, false, false, false, false, false, false, true},
+		{false, false, false, false, false, true, false, false},
+		{false, false, true, false, false, false, false, false},
+		{false, false, false, false, false, false, true, false},
+		{false, true, false, false, false, false, false, false},
+		{false, false, false, true, false, false, false, false},
+	}
+
+	assert.Equalf(suite.T(), expectedSolutionCount, len(solutions), "PlaceQueens: expected %v, got: %v", expectedSolutionCount, len(solutions))
+	assert.Equalf(suite.T(), expectedFirstsolution, solutions[0], "PlaceQueens: expected %v, got: %v", expectedFirstsolution, solutions[0])
 }
 
 func TestEightQueensSuite(t *testing.T) {

@@ -129,10 +129,6 @@ func (suite *EightQueensSuite) TestCheckDiagonal() {
 	}
 }
 
-func (suite *EightQueensSuite) TestPlaceQueen() {
-	assert.PanicsWithValue(suite.T(), "not implemented", func() { placeQueen(suite.board, 0, 0) })
-}
-
 func TestEightQueensSuite(t *testing.T) {
 	suite.Run(t, new(EightQueensSuite))
 }

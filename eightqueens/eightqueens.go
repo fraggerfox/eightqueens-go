@@ -35,14 +35,26 @@ func checkDiagonal(board Board, row, col int) bool {
 	return true
 }
 
+// IsSafe checks if a row, col combinatation is safe to place a Queen.
 func IsSafe(board Board, row, col int) bool {
-	return checkDiagonal(board, row, col) && checkRowColumn(board, row, col)
+	return checkRowColumn(board, row, col) && checkDiagonal(board, row, col)
 }
 
-func placeQueen(board Board, row, col int) bool {
-	panic("not implemented")
-}
+// PlaceQueens recursively attempts to place Queens on a chessboard, backtracks in case of failures.
+// Bruteforce the solution by exhaustive searching.
+func PlaceQueens(board Board, row int, solutions *Boards) Boards {
+	if row == BOARD_SIZE {
+		*solutions = append(*solutions, board)
+		return *solutions
+	}
 
-func PlaceQueens(board Board, row int) Boards {
-	return nil
+	for col := 0; col < BOARD_SIZE; col++ {
+		if IsSafe(board, row, col) {
+			board[row][col] = true
+			PlaceQueens(board, row+1, solutions)
+			board[row][col] = false
+		}
+	}
+
+	return *solutions
 }

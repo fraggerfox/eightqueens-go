@@ -12,7 +12,7 @@ func TestMain(t *testing.T) {
 	expectedExit := 0
 	actualExit := realMain(&buf)
 
-	expectedMessage := "Found 0 solutions.\n"
+	expectedMessage := "Found 92 solutions.\n"
 	actualMessage := buf.String()
 
 	assert.Equal(t, expectedExit, actualExit)
