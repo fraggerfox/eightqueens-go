@@ -99,3 +99,7 @@ Finally, the main program calls `PlaceQueens` to find all solutions and prints o
 ## What is done by me?
 
 Once the boilerplate solution was given, it was a process of breaking it down into sizeable chunks which, started off as the base point for which I wrote the tests using `testify` library.
+
+The tests for the respective broken down blocks have been written in the respective `eightqueens_test.go` and `eightqueens_internal_test.go`. The internal test is specifically to test the unexposed parts of the Golang code in the `eightqueens` package.
+
+In addition to this `main.go` has a simple test written to show how to improve the testing of logic that would reside in `func main()` in Golang.
